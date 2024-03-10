@@ -1,5 +1,4 @@
 const getData = async () => {
-    console.log('4')
     const data = await fetch('/public/projects.json');
     if(data.ok) {
         return data.json()
@@ -9,15 +8,12 @@ const getData = async () => {
 }
 
 const getCourses = (callback, prop, value) => {
-    console.log('5')
     getData()
         .then(data => {
-            if (value) {
-                console.log('1')
-                callback(data.filter(item => item[prop].includes(value)))
-            } else {
-                console.log('2')
+            if (!value || value==='#all') {
                 callback(data)
+            } else {
+                callback(data.filter(item => item[prop].includes(value)))
             }
         })
         .catch(err => {
