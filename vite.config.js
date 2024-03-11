@@ -23,5 +23,5 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./source', import.meta.url))
     }
   },
-  base: '/test'
+  base: '/skillbox-js-test'
 })
