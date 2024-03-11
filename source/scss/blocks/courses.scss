@@ -1,4 +1,15 @@
 .courses {
+  &__item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s;
+
+    &.element-show {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+
   &__heading {
     background-color: #e6e6e6;
     border-radius: 20px;

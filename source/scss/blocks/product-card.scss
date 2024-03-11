@@ -23,8 +23,11 @@
     border-radius: inherit;
     transition: transform 0.3s ease-out;
   }
-
+  //&--light-blue {
+  //  background-color: #77CBFA;
+  //}
   &--light-blue::before {
+    content: "";
     background-color: #77CBFA;
   }
 
