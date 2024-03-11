@@ -1,5 +1,5 @@
 const getData = async () => {
-    const data = await fetch('/public/projects.json');
+    const data = await fetch('/projects.json');
     if(data.ok) {
         return data.json()
     } else {
