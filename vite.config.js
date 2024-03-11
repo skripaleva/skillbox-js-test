@@ -22,5 +22,6 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./source', import.meta.url))
     }
-  }
+  },
+  base: '/test'
 })
