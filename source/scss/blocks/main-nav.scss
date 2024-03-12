@@ -20,15 +20,24 @@
     z-index: 20;
   }
 
+  &__item {
+
+    &.is-active {
+
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
   &.is-active {
     opacity: 1;
     pointer-events: all;
     visibility: visible;
 
-    .main-nav__item {
-      opacity: 1;
-      transform: translateX(0);
-    }
+    //.main-nav__item {
+    //  opacity: 1;
+    //  transform: translateX(0);
+    //}
   }
 
   &__list {

@@ -1,7 +1,5 @@
 import getCourses from "./service.js";
 import createCard from "./card.js";
-import observer from "./animation.js";
-
 
 const initFilter = hash => {
     try {
@@ -12,16 +10,26 @@ const initFilter = hash => {
             coursesList.textContent = '';
             const courses = data.map(createCard);
             coursesList.append(...courses)
-
-            let elements = document.querySelectorAll('.courses__item');
-            for (let elm of elements) {
-                observer.observe(elm);
-            }
         }
 
+        let filterBtns = document.querySelectorAll('[data-filter="link"]');
+
         window.addEventListener('hashchange', () => {
+            coursesList.classList.remove('is-active');
             hash = location.hash;
+
+            setTimeout(() => {
+                coursesList.classList.add('is-active');
+                getCourses(renderCoursesList, 'tags', hash);
+            }, 100)
+
             getCourses(renderCoursesList, 'tags', hash);
+            filterBtns.forEach((el) => el.classList.remove('is-active'))
+            filterBtns.forEach((btn) => {
+                if (btn.href.split('#')[1] === hash.substring(1)) {
+                    btn.classList.add('is-active')
+                }
+            })
         })
 
         getCourses(renderCoursesList, 'tags', hash)
@@ -30,13 +38,6 @@ const initFilter = hash => {
         console.log(err)
     }
 
-    let filterBtns = document.querySelectorAll('[data-filter="link"]');
-    filterBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach((el) => el.classList.remove('is-active'))
-            btn.classList.add('is-active')
-        })
-    })
 }
 
 export {initFilter}
